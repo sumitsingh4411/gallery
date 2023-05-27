@@ -1,0 +1,21 @@
+.header {
+  width: 100%;
+  height: 120px;
+  background: #000000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: sticky;
+  top: 0;
+  .header__container {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    .header__title {
+      font-size: 32px;
+      font-weight: 700;
+      text-align: center;
+      color: #ffffff;
+    }
+  }
+}

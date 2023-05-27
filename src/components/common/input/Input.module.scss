@@ -1,0 +1,72 @@
+.input {
+  position: relative;
+  .input_container {
+    display: flex;
+    align-items: center;
+    width: 400px;
+    height: 36px;
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: 400;
+    border: 1px solid #fff;
+    background-color: white;
+    color: #000000;
+    .input__field {
+      padding: 4px 8px;
+      width: 100%;
+      height: 100%;
+      border: none;
+      outline: none;
+    }
+    .input__icon {
+      width: 32px;
+      height: 32px;
+      cursor: pointer;
+    }
+  }
+}
+
+.input__suggestions {
+  position: absolute;
+  margin-top: 4px;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  background-color: white;
+  border: 1px solid #000000;
+  border-radius: 4px;
+  z-index: 1;
+  padding: 8px;
+  .input__suggestion {
+    padding: 6px 8px;
+    cursor: pointer;
+    &:hover {
+      background-color: #f3f3f3;
+    }
+  }
+  .input__suggestion_btn_container {
+    display: flex;
+    justify-content: flex-end;
+  }
+  .input__suggestion_btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 120px;
+    color: white;
+    padding: 4px 8px;
+    height: 36px;
+    cursor: pointer;
+    border-radius: 4px;
+    background-color: #eb3b3b;
+  }
+}
+
+//for mobile screen css
+@media (max-width: 768px) {
+  .input {
+    .input_container {
+      width: 100%;
+    }
+  }
+}
