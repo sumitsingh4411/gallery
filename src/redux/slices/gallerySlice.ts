@@ -2,6 +2,7 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
 import axios from "axios";
 import { getFlickrApiUrl, getImage } from "../../utils/functions";
+import { get } from "http";
 
 export interface IStatus {
   LOADING: string;
@@ -70,7 +71,10 @@ export const gallerySlice = createSlice({
       })
       .addCase(getImagesList.fulfilled, (state, action) => {
         state.images = [...state.images, ...getImage(action?.payload)];
-        if (state.images.length === 0) {
+        console.log(state.images, getImage(action?.payload));
+        if (state.images.length !== 0 && getImage(action?.payload)?.length === 0) {
+          state.error = "No more images found";
+        } else if (state.images.length === 0) {
           state.error = "No images found";
         } else {
           state.error = "";
