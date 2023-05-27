@@ -12,7 +12,7 @@ import useIntersectionObserver from "../../utils/hooks/useIntersectionObserver";
 
 function PhotoGallery() {
   const dispatch = useDispatch<AppDispatch>();
-  const { images, page, status } = useSelector(selectGallery);
+  const { images, page, status, error } = useSelector(selectGallery);
   const loaderRef = useRef<HTMLDivElement | null>(null);
   const entry = useIntersectionObserver(loaderRef, status, {});
 
@@ -36,7 +36,7 @@ function PhotoGallery() {
         ))}
       </div>
       <div className={styles.photoGallery__loader}>
-        <Loader loaderRef={loaderRef} />
+        {error ? error : <Loader loaderRef={loaderRef} />}
       </div>
     </div>
   );

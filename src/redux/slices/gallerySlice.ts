@@ -20,6 +20,7 @@ export interface GalleryState {
   page: number;
   searchText: string;
   status: string;
+  error: string;
 }
 
 const initialState: GalleryState = {
@@ -27,6 +28,7 @@ const initialState: GalleryState = {
   page: 1,
   searchText: "",
   status: STATUS.LOADING,
+  error: "",
 };
 
 export interface Option {
@@ -68,6 +70,11 @@ export const gallerySlice = createSlice({
       })
       .addCase(getImagesList.fulfilled, (state, action) => {
         state.images = [...state.images, ...getImage(action?.payload)];
+        if (state.images.length === 0) {
+          state.error = "No images found";
+        } else {
+          state.error = "";
+        }
         state.status = STATUS.SUCCESS;
       })
       .addCase(getImagesList.rejected, (state) => {
